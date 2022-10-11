@@ -21,6 +21,7 @@ public class CamelCaseConfig implements PersistentStateComponent<CamelCaseConfig
     public boolean cb5State = true;
     public boolean cb6State = true;
     public boolean cb7State = true;
+    public boolean cb8State = true;
     public String[] model = {
             "kebab-case",
             "SNAKE_CASE",
@@ -28,7 +29,8 @@ public class CamelCaseConfig implements PersistentStateComponent<CamelCaseConfig
             "camelCase",
             "snake_case",
             "space case",
-            "Camel Case",};
+            "Camel Case",
+            "dot.case"};
 
 
     CamelCaseConfig() {
@@ -93,6 +95,14 @@ public class CamelCaseConfig implements PersistentStateComponent<CamelCaseConfig
 
     public boolean getcb7State() {
         return cb7State;
+    }
+
+    public boolean isCb8State() {
+        return cb8State;
+    }
+
+    public void setCb8State(boolean cb8State) {
+        this.cb8State = cb8State;
     }
 
     public String[] getmodel() {

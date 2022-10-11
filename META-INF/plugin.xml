@@ -1,11 +1,11 @@
 <idea-plugin>
     <id>de.netnexus.camelcaseplugin</id>
-    <name>CamelCase</name>
-    <version>3.0.12</version>
+    <name>My CamelCase</name>
+    <version>3.0.12-dot</version>
     <vendor email="info@netnexus.de" url="http://netnexus.de?src=camelCase">NetNexus</vendor>
 
     <description><![CDATA[
-      Switch easily between kebab-case, SNAKE_CASE, PascalCase, camelCase, snake_case or space case. See Edit menu or use ⇧ + ⌥ + U / Shift + Alt + U.
+      Switch easily between kebab-case, SNAKE_CASE, PascalCase, camelCase, snake_case, space case or dot.case. See Edit menu or use ⇧ + ⌥ + U / Shift + Alt + U.
       <br />
       Please have a look at the preferences of this plugin: 
       You can disable some conversions or change their order.

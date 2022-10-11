@@ -99,7 +99,8 @@ public class CamelCaseEditorActionHandler<T> extends EditorActionHandler {
         if (project != null) {
             CamelCaseConfig config = CamelCaseConfig.getInstance(project);
             if (config != null && (config.getcb1State() || config.getcb2State() || config.getcb3State() || config.getcb4State() || config.getcb5State() || config.getcb6State())) {
-                newText = Conversion.transform(text, config.getcb7State(), // pascal case with space
+                newText = Conversion.transform(text, config.isCb8State(),
+                        config.getcb7State(), // pascal case with space
                         config.getcb6State(), // space case
                         config.getcb1State(), // kebab case
                         config.getcb2State(), // upper snake case
@@ -122,8 +123,9 @@ public class CamelCaseEditorActionHandler<T> extends EditorActionHandler {
     }
 
     private String runWithoutConfig(String text) {
-        String[] conversionList = {"kebab-case", "SNAKE_CASE", "CamelCase", "camelCase", "snake_case", "space case", "Camel Case"};
-        return Conversion.transform(text, true, // pascal case with space
+        String[] conversionList = {"kebab-case", "SNAKE_CASE", "CamelCase", "camelCase", "snake_case", "space case", "Camel Case", "dot.case"};
+        return Conversion.transform(text, true,
+                true, // pascal case with space
                 true, // space case
                 true, // kebab case
                 true, // upper snake case

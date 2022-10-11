@@ -1,5 +1,6 @@
 package de.netnexus.CamelCasePlugin;
 
+import com.intellij.openapi.diagnostic.Logger;
 import org.apache.commons.lang.WordUtils;
 import org.jetbrains.annotations.NotNull;
 
@@ -19,9 +20,11 @@ class Conversion {
     private static final String CONVERSION_CAMEL_CASE = "camelCase";
     private static final String CONVERSION_PASCAL_CASE_SPACE = "Camel Case";
     private static final String CONVERSION_LOWER_SNAKE_CASE = "snake_case";
+    private static final String CONVERSION_DOT_CASE = "dot.case";
 
     @NotNull
     static String transform(String text,
+                            boolean useDotCase,
                             boolean usePascalCaseWithSpace,
                             boolean useSpaceCase,
                             boolean useKebabCase,
@@ -53,12 +56,24 @@ class Conversion {
                 if (next == null) {
                     next = getNext(CONVERSION_LOWER_SNAKE_CASE, conversionList);
                 } else {
+                    if (next.equals(CONVERSION_DOT_CASE)) {
+                        repeat = !useDotCase;
+                        next = getNext(CONVERSION_DOT_CASE, conversionList);
+                    }
+                }
+                newText = text.replace('_', '.');
+
+            } else if (isLowerCase && text.contains(".")) {
+                // dot.case to space case
+                if (next == null) {
+                    next = getNext(CONVERSION_DOT_CASE, conversionList);
+                } else {
                     if (next.equals(CONVERSION_SPACE_CASE)) {
                         repeat = !useSpaceCase;
                         next = getNext(CONVERSION_SPACE_CASE, conversionList);
                     }
                 }
-                newText = text.replace('_', ' ');
+                newText = text.replace('.', ' ');
 
             } else if (isLowerCase && text.contains(" ")) {
                 // space case to Camel Case
